@@ -1,0 +1,64 @@
+
+<root available-locales="es_ES" default-locale="es_ES">
+	<dynamic-element fieldNamespace="ddm" indexType="" localizable="true" name="Nota__El_identificador_debe_ser_del_contenido_web_al_cual_desea_mostrar" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-separator" width="">
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[* La carpeta elegida debe existir dentro de la carpeta 'Menu']]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+			<entry name="style">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element dataType="string" indexType="keyword" localizable="true" name="txtIdContenido" readOnly="false" repeatable="false" required="true" showLabel="true" type="text" width="small">
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[#Nombre de la carpeta donde se encuentra el contenido:]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element fieldNamespace="ddm" indexType="" localizable="false" name="Separador17268" readOnly="false" repeatable="false" required="false" showLabel="false" type="ddm-separator" width="">
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[Separador]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+			<entry name="style">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element fieldNamespace="ddm" indexType="" localizable="true" name="Nota__Para_que_los_cambios_se_guarden_debe_pulsar__Publicar_" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-separator" width="">
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[Nota: Para que los cambios se guarden debe pulsar "Publicar"]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+			<entry name="style">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+</root>

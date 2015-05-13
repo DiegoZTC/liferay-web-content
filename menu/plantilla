@@ -1,0 +1,164 @@
+#set($carpetaPrincipal = "menu")
+#set ($languageId = $request.theme-display.language-id)
+
+#set ($DDMStructureLocalService = $serviceLocator.findService("com.liferay.portlet.dynamicdatamapping.service.DDMStructureLocalService"))
+
+
+#set($listaArticulos = [])
+
+#set($art_tmp = "")
+
+###########################################
+## Manipulation of object DDM in Liferay
+
+## Get an DDMStructureLocalServiceUtil Object
+#set ($DDMStructureLocalService = $serviceLocator.findService("com.liferay.portlet.dynamicdatamapping.service.DDMStructureLocalService"))
+
+## Get an JournalArticleLocalServiceUtil Object
+
+#set ($journalArticles = $serviceLocator.findService("com.liferay.portlet.journal.service.JournalArticleLocalService"))
+
+## Get the current groupId 
+#set ($group_id = $getterUtil.getLong($request.theme-display.scope-group-id))
+
+## Get the all structures in the Portal
+#foreach ($ddm in $DDMStructureLocalService.getStructures())
+	  
+    ## Get the all articles that use a template
+
+   
+	     	 #foreach ($addm in $journalArticles.getStructureArticles($getterUtil.getLong($group_id),$ddm.getStructureKey()))
+	     	            
+	     	            	      
+	     	 	      #if($art_tmp!=$addm.getUrlTitle())
+	     	 	           
+	     	 	            #if( $addm.getFolder().getParentFolder().getName().toLowerCase() == 
+	     	 	                    $carpetaPrincipal)
+	     	 	                    
+	     	 	                    #if($addm.getFolder().getName().toLowerCase() == 
+	     	 	                        $txtIdContenido.getData().toLowerCase())
+	     	 	      
+	             	 	                #set($bar = $listaArticulos.add($addm))
+	             	 	           #end
+	             	 	   #end
+	     	          #end
+
+                    #set($art_tmp=$addm.getUrlTitle())
+	     	 
+	     	 #end
+   
+#end
+
+##<script src="/cfavorita-theme/js/jquery-1.11.3.js" type="text/javascript"/>
+##<script src="/js/jquery-ui.js" type="text/javascript"/>
+
+#set ($pathThemeImages = $xmlRequest.replaceFirst('(?s).*<path-theme-images>(.*)</path-theme-images>.*', '$1'))
+#set ($themeContextName = $pathThemeImages.replaceFirst('http.*//(.*)/(.*)/images', '/$2'))
+##$themeContextName
+#set ($imagePath = $request.get("theme-display").path-theme-images)
+
+##<a href='$imagePath../../js/jquery/1.7.2/jquery.min.js'>Alfa</a>
+
+<script type="text/javascript">
+var aURLs = [
+    '$imagePath../../js/jquery/1.11.3/jquery-1.11.0.min.js',
+    '$imagePath../../js/jquery/jquery-ui.js',
+    '$imagePath../../js/responsive-tabs/jquery.responsiveTabs.min.js'    
+];
+
+//,'$imagePath../../css/responsive-tabs/style.css'
+var jcss=[
+'$imagePath../../css/responsive-tabs/responsive-tabs.css'
+
+];
+
+YUI().use('get', function(Y){
+
+
+    Y.Get.css(
+    jcss,
+    {
+    
+        onFailure: function () {
+            Y.log('Failure!');
+        },
+
+        onSuccess: function () {
+             Y.log('Success!');
+        }
+    
+    });
+    
+  
+}); 
+
+YUI().use('get', function(Y){
+
+
+    Y.Get.js(
+    aURLs,
+    {
+    
+        onFailure: function () {
+            Y.log('Failure!');
+        },
+
+        onSuccess: function () {
+           $(window).load(function(){ 
+           
+           
+                            var $tabs = $('#menu');
+                 $("#menu-wrap").css("display", "none");
+                    $tabs.fadeIn(750);
+                    $tabs.responsiveTabs({
+                    startCollapsed: 'accordion',
+                    event: 'mouseover',
+                    active: 0
+                    });
+           }); 
+            
+             Y.log('Success!');
+        }
+    
+    });
+    
+  
+}); 
+
+
+
+</script>
+<style type="text/css">
+
+
+    
+</style>
+
+<div style="height: 310px; display:block" id="menu-wrap"></div>
+<div id="menu" style="display:none;">
+ 
+  
+    <ul>
+ 
+      	#foreach ($cur_Articulo in $listaArticulos)
+
+               <li><a href=#tab-$cur_Articulo.getUrlTitle()>$cur_Articulo.getTitle($localeUtil.getDefault()).toUpperCase()</a></li>
+     #end
+  </ul>
+  
+	    #foreach ($cur_Articulo in $listaArticulos)
+	    
+	  
+            <div id=tab-$cur_Articulo.getUrlTitle()>
+                            #set ($webcontent-id = $cur_Articulo.getArticleId())
+                            #set ($webcontent=$journalContentUtil.getContent($getterUtil.getLong($group_id), $webcontent-id, "", "$locale", ""))
+                            $webcontent
+                  
+           </div>
+       
+        #end
+   
+
+   
+
+</div>
