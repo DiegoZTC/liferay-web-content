@@ -1,0 +1,1 @@
+Estructuras y Plantillas del contenido del Portal Liferay
