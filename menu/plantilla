@@ -49,15 +49,13 @@
    
 #end
 
-##<script src="/cfavorita-theme/js/jquery-1.11.3.js" type="text/javascript"/>
-##<script src="/js/jquery-ui.js" type="text/javascript"/>
 
 #set ($pathThemeImages = $xmlRequest.replaceFirst('(?s).*<path-theme-images>(.*)</path-theme-images>.*', '$1'))
 #set ($themeContextName = $pathThemeImages.replaceFirst('http.*//(.*)/(.*)/images', '/$2'))
 ##$themeContextName
 #set ($imagePath = $request.get("theme-display").path-theme-images)
 
-##<a href='$imagePath../../js/jquery/1.7.2/jquery.min.js'>Alfa</a>
+
 
 <script type="text/javascript">
 var aURLs = [
@@ -66,31 +64,10 @@ var aURLs = [
     '$imagePath../../js/responsive-tabs/jquery.responsiveTabs.min.js'    
 ];
 
-//,'$imagePath../../css/responsive-tabs/style.css'
+
 var jcss=[
 '$imagePath../../css/responsive-tabs/responsive-tabs.css'
-
 ];
-
-YUI().use('get', function(Y){
-
-
-    Y.Get.css(
-    jcss,
-    {
-    
-        onFailure: function () {
-            Y.log('Failure!');
-        },
-
-        onSuccess: function () {
-             Y.log('Success!');
-        }
-    
-    });
-    
-  
-}); 
 
 YUI().use('get', function(Y){
 
@@ -107,9 +84,9 @@ YUI().use('get', function(Y){
            $(window).load(function(){ 
            
            
-                            var $tabs = $('#menu');
+                var $tabs = $('#menu');
                  $("#menu-wrap").css("display", "none");
-                    $tabs.fadeIn(750);
+                    $tabs.fadeIn(500);
                     $tabs.responsiveTabs({
                     startCollapsed: 'accordion',
                     event: 'mouseover',
