@@ -98,13 +98,26 @@ YUI().use('get', function(Y){
            
            
                 var $tabs = $('#menu');
-                 $("#menu-wrap").css("display", "none");
-                    $tabs.fadeIn(500);
+                 
+                    
+                    $( "#menu" ).fadeIn( "slow","linear");
+                    $("#menu-wrap").css("display", "none");
+                    
+                    $( "#menu" ).fadeIn("start", function() {
+                    $("#nav-menu").fadeIn("slow"); 
+                    $("#nav-menu").css("background","#CCCCCC");
+                 });
+                     
+                     
+                  
+                    
                     $tabs.responsiveTabs({
                     startCollapsed: 'accordion',
                     event: 'mouseover',
                     active: 0
                     });
+         
+                    
            }); 
             
              console.log('Success!');
