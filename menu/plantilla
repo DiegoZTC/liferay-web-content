@@ -64,7 +64,7 @@ var aURLS=[];
 if (typeof jQuery == 'undefined') {  
     
       aURLs = [
-    '$imagePath../../js/jquery/1.11.3/jquery-1.11.0.min.js',
+    '$imagePath../../js/jquery/jquery-2.1.0.min.js',
     '$imagePath../../js/jquery/jquery-ui.js',
     '$imagePath../../js/responsive-tabs/jquery.responsiveTabs.min.js'    
 ];
@@ -77,10 +77,10 @@ if (typeof jQuery == 'undefined') {
 }
 
 
-
 var jcss=[
 '$imagePath../../css/responsive-tabs/responsive-tabs.css'
 ];
+
 
 YUI().use('get', function(Y){
 
