@@ -58,11 +58,24 @@
 
 
 <script type="text/javascript">
-var aURLs = [
+
+var aURLS=[];
+
+if (typeof jQuery == 'undefined') {  
+    
+      aURLs = [
     '$imagePath../../js/jquery/1.11.3/jquery-1.11.0.min.js',
     '$imagePath../../js/jquery/jquery-ui.js',
     '$imagePath../../js/responsive-tabs/jquery.responsiveTabs.min.js'    
 ];
+    
+} else {
+   aURLs = [
+    '$imagePath../../js/jquery/jquery-ui.js',
+    '$imagePath../../js/responsive-tabs/jquery.responsiveTabs.min.js'    
+];
+}
+
 
 
 var jcss=[
@@ -73,15 +86,15 @@ YUI().use('get', function(Y){
 
 
     Y.Get.js(
-    aURLs,
+    aURLs ,
     {
     
         onFailure: function () {
-            Y.log('Failure!');
+            console.log('Failure!');
         },
 
         onSuccess: function () {
-           $(window).load(function(){ 
+           $(document).ready(function(){ 
            
            
                 var $tabs = $('#menu');
@@ -94,7 +107,7 @@ YUI().use('get', function(Y){
                     });
            }); 
             
-             Y.log('Success!');
+             console.log('Success!');
         }
     
     });
