@@ -2,29 +2,17 @@
 
 var aURLS=[];
 
-var path=document.getElementById("js-path").getAttribute('path');
+var path=document.getElementById("folder").getAttribute('path');
 
 
 if (typeof jQuery == 'undefined') {  
     
-      aURLs = [
+    aURLs = [
     path+'../../js/jquery/jquery-2.1.0.min.js',
     path+'../../js/jquery/jquery-ui.js'   
 ];
     
-} else {
-
-
-if (typeof jQuery.ui == 'undefined') {  
-  aURLs = [
-    path+'../../js/jquery/jquery-ui.js'   
-    ];
-}
-
-   
-}
-
-
+} 
 
 
 YUI().use('get', function(Y){
@@ -35,7 +23,7 @@ YUI().use('get', function(Y){
     {
     
         onFailure: function () {
-            console.log('Failure!');
+            Y.log('Failure!');
         },
 
         onSuccess: function () {
@@ -56,7 +44,7 @@ YUI().use('get', function(Y){
                 }); 
 
             
-             console.log('Success!');
+             Y.log('Success!');
         }
     
     });
