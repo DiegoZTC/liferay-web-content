@@ -37,8 +37,7 @@
 	     	 	                    
 	     	 	                    #if($addm.getFolder().getName().toLowerCase() == 
 	     	 	                        $txtIdContenido.getData().toLowerCase())
-	     	 	      
-	             	 	                #set($bar = $listaArticulos.add($addm))
+	     	 	                             #set($bar = $listaArticulos.add($addm))
 	             	 	           #end
 	             	 	   #end
 	     	          #end
@@ -68,12 +67,16 @@ if (typeof jQuery == 'undefined') {
     '$imagePath../../js/jquery/jquery-ui.js',
     '$imagePath../../js/responsive-tabs/jquery.responsiveTabs.min.js'    
 ];
-    
+
 } else {
-   aURLs = [
+
+  aURLs = [
+    
     '$imagePath../../js/jquery/jquery-ui.js',
     '$imagePath../../js/responsive-tabs/jquery.responsiveTabs.min.js'    
-];
+    ];
+    
+
 }
 
 
@@ -90,7 +93,7 @@ YUI().use('get', function(Y){
     {
     
         onFailure: function () {
-            console.log('Failure!');
+          Y.log('Failure!');
         },
 
         onSuccess: function () {
@@ -120,7 +123,7 @@ YUI().use('get', function(Y){
                     
            }); 
             
-             console.log('Success!');
+          Y.log('Success!');
         }
     
     });
@@ -145,13 +148,14 @@ YUI().use('get', function(Y){
  
       	#foreach ($cur_Articulo in $listaArticulos)
 
+                
                <li><a href=#tab-$cur_Articulo.getUrlTitle()>$cur_Articulo.getTitle($localeUtil.getDefault()).toUpperCase()</a></li>
      #end
   </ul>
-  
+        <div id="folder" path="$imagePath"/>
 	    #foreach ($cur_Articulo in $listaArticulos)
 	    
-	  
+	        
             <div id=tab-$cur_Articulo.getUrlTitle()>
                             #set ($webcontent-id = $cur_Articulo.getArticleId())
                             #set ($webcontent=$journalContentUtil.getContent($getterUtil.getLong($group_id), $webcontent-id, "", "$locale", ""))
