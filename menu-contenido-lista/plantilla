@@ -1,0 +1,99 @@
+<script type="text/javascript">
+
+var aURLS=[];
+
+var path=document.getElementById("js-path").getAttribute('path');
+
+
+if (typeof jQuery == 'undefined') {  
+    
+      aURLs = [
+    path+'../../js/jquery/jquery-2.1.0.min.js',
+    path+'../../js/jquery/jquery-ui.js'   
+];
+    
+} else {
+
+
+if (typeof jQuery.ui == 'undefined') {  
+  aURLs = [
+    path+'../../js/jquery/jquery-ui.js'   
+    ];
+}
+
+   
+}
+
+
+
+
+YUI().use('get', function(Y){
+
+
+    Y.Get.js(
+    aURLs ,
+    {
+    
+        onFailure: function () {
+            console.log('Failure!');
+        },
+
+        onSuccess: function () {
+            $(document).ready(function(e){ 
+           
+              var $id='$reserved-article-id.data';
+                var $tabs = $("#"+$id);
+                
+                    $tabs.tabs(
+                        {event:"mouseover",
+                        active:0
+                        }
+                    );
+                    
+                     $tabs.tabs().addClass('ui-tabs-vertical ui-helper-clearfix');
+                    $("#"+$id+" li").removeClass('ui-corner-top').addClass('ui-corner-left');
+              
+                }); 
+
+            
+             console.log('Success!');
+        }
+    
+    });
+    
+  
+}); 
+
+</script>
+##$reserved-article-title.data
+      
+    
+   
+    #set($cnt = 1)
+    <div id="$reserved-article-id.data" class="contenidos-lista">
+      
+    <ul>
+      <div class="lista titulo">$reserved-article-title.data</div>
+    #if (!$txtNomEtiqueta.getSiblings().isEmpty())
+	#foreach ($cur_txtNomEtiqueta in $txtNomEtiqueta.getSiblings())
+	    <li><a class="lista titulo-item" href="#tabs-$cnt">$cur_txtNomEtiqueta.getData()</a></li>
+	     #set($cnt = $cnt+1)
+    	#end
+    #end
+    </ul>
+
+    #set($cnt = 1)
+     #if (!$txtNomEtiqueta.getSiblings().isEmpty())
+	#foreach ($cur_txtNomEtiqueta in $txtNomEtiqueta.getSiblings())
+  <div id="tabs-$cnt">
+    
+    <a href="$cur_txtNomEtiqueta.linkPagEtiqueta.getFriendlyUrl()">
+    <img class="imagen" src="$cur_txtNomEtiqueta.imgEtiqueta.Data"  width="100%" />
+    </a>
+  </div>
+
+    #set($cnt = $cnt+1)
+    
+	#end
+    #end
+    </div>
