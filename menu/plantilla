@@ -4,8 +4,8 @@
 #set ($DDMStructureLocalService = $serviceLocator.findService("com.liferay.portlet.dynamicdatamapping.service.DDMStructureLocalService"))
 
 
-#set($listaArticulos = [])
 
+#set($tmpLista = [])
 #set($art_tmp = "")
 
 ###########################################
@@ -37,7 +37,10 @@
 	     	 	                    
 	     	 	                    #if($addm.getFolder().getName().toLowerCase() == 
 	     	 	                        $txtIdContenido.getData().toLowerCase())
-	     	 	                             #set($bar = $listaArticulos.add($addm))
+	     	 	                           
+	     	 	                            #if($addm.getArticleId()!= $reserve.article.id.data)
+	     	 	                                #set($bar = $tmpLista.add($addm))
+     	 	                                #end
 	             	 	           #end
 	             	 	   #end
 	     	          #end
@@ -48,11 +51,46 @@
    
 #end
 
+#set($listArticulos = [])
 
 #set ($pathThemeImages = $xmlRequest.replaceFirst('(?s).*<path-theme-images>(.*)</path-theme-images>.*', '$1'))
 #set ($themeContextName = $pathThemeImages.replaceFirst('http.*//(.*)/(.*)/images', '/$2'))
 ##$themeContextName
 #set ($imagePath = $request.get("theme-display").path-theme-images)
+
+
+#if (!$tmpLista.isEmpty())
+
+    #foreach ($entry in $tmpLista)
+        
+         #set ($doc = $saxReaderUtil.read($entry.getContentByLocale($entry.getDefaultLocale())))
+         #set ($rootEl = $doc.getRootElement())
+            #foreach( $el in $rootEl.elements())
+                #if( "txtIndice" == $el.attributeValue("name") )
+                    #set( $indice = $el.element("dynamic-content").getText() )
+                     
+                       ##$indice >  $entry.getArticleId() > $entry.getTitle($localeUtil.getDefault())
+                        #set ($dummy = $listArticulos.add({
+                        "indice":$indice,
+                        "articuloId":"$entry.getArticleId()",
+                        "articuloTitulo":"$entry.getTitle($localeUtil.getDefault())",
+                        "articulo":$entry}))
+                    
+                    
+                #end
+            #end
+           
+    #end
+#end
+
+
+#set($articulos = [])
+#foreach ($item in $sortTool.sort($listArticulos,['indice:asc','articuloTitulo:asc']))
+    #set ($dummy =$articulos.add($item.articulo))
+#end
+
+
+
 
 
 
@@ -140,27 +178,30 @@ YUI().use('get', function(Y){
     
 </style>
 
+
+        
 <div style="height: 310px; display:block" id="menu-wrap"></div>
 <div id="menu" style="display:none;">
  
   
     <ul>
  
-      	#foreach ($cur_Articulo in $listaArticulos)
+        
+      	#foreach ($cur_Articulo in $articulos)
 
                 
                <li><a href=#tab-$cur_Articulo.getUrlTitle()>$cur_Articulo.getTitle($localeUtil.getDefault()).toUpperCase()</a></li>
      #end
   </ul>
         <div id="folder" path="$imagePath"/>
-	    #foreach ($cur_Articulo in $listaArticulos)
+	    #foreach ($cur_Articulo in $articulos)
 	    
 	        
             <div id=tab-$cur_Articulo.getUrlTitle()>
                             #set ($webcontent-id = $cur_Articulo.getArticleId())
                             #set ($webcontent=$journalContentUtil.getContent($getterUtil.getLong($group_id), $webcontent-id, "", "$locale", ""))
                             $webcontent
-                  
+                     
            </div>
        
         #end
