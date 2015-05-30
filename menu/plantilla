@@ -89,11 +89,6 @@
     #set ($dummy =$articulos.add($item.articulo))
 #end
 
-
-
-
-
-
 <script type="text/javascript">
 
 var aURLS=[];
@@ -116,14 +111,11 @@ if (typeof jQuery == 'undefined') {
 
 }
 
-
 YUI().use('get', function(Y){
-
 
     Y.Get.js(
     aURLs ,
     {
-    
         onFailure: function () {
           Y.log('Failure!');
         },
@@ -132,16 +124,7 @@ YUI().use('get', function(Y){
            $(document).ready(function(){ 
     
                 var $tabs = $('#menu');
-                 
-                /*
-                    $( "#menu" ).fadeIn( "100","linear");
-                    $("#menu-wrap").css("display", "none");
-                    
-                    $( "#menu" ).fadeIn("start", function() {
-                    $("#nav-menu").fadeIn("slow"); 
-                    $("#nav-menu").css("background","#CCCCCC");
-                 });
-                 */
+ 
                     $("#menu-wrap").css("display", "none");
                     $("#menu").css("display", "block");
                   
@@ -159,19 +142,15 @@ YUI().use('get', function(Y){
                     
                     
                      $("#menu ul li a").mouseover(function() {
-                      var tab=$(this).attr('href');
-                     //console.log(tab);
-                     var tab_article=$(tab).attr('articleid');
-                     //console.log($("#"+tab_article));
-                     
-                     var tab_item="#"+tab_article+" ul li a";
-                     if(tab_item!="")
-                        {
-                            var img_src=$(tab_item).attr('img-src');
-                            //console.log($(tab_item));
-                            //console.log(img_src);
-                            $("#"+tab_article+" #tabs-1 img").attr('src',img_src);
-                        }
+                        var tab=$(this).attr('href');
+                        var tab_article=$(tab).attr('articleid');
+
+                         var tab_item="#"+tab_article+" ul li a";
+                         if(tab_item!="")
+                            {
+                                var img_src=$(tab_item).attr('img-src');
+                                $("#"+tab_article+" #tabs-1 img").attr('src',img_src);
+                            }
                      });
                     
            }); 
@@ -186,26 +165,15 @@ YUI().use('get', function(Y){
 
 </script>
 
-
-
-        
 <div style="height: 322px; display:block" id="menu-wrap"></div>
 <div id="menu" style="display:block;">
- 
-  
     <ul>
- 
-        
-      	#foreach ($cur_Articulo in $articulos)
-
-                
-               <li><a href=#tab-$cur_Articulo.getUrlTitle()>$cur_Articulo.getTitle($localeUtil.getDefault()).toUpperCase()</a></li>
-     #end
-  </ul>
+        #foreach ($cur_Articulo in $articulos)
+            <li><a href=#tab-$cur_Articulo.getUrlTitle()>$cur_Articulo.getTitle($localeUtil.getDefault()).toUpperCase()</a></li>
+         #end
+    </ul>
        
-          #foreach ($cur_Articulo in $articulos)
-	    
-	        
+        #foreach ($cur_Articulo in $articulos)
             <div id=tab-$cur_Articulo.getUrlTitle() articleId=$cur_Articulo.getArticleId()>
                             #set ($webcontent-id = $cur_Articulo.getArticleId())
                             #set ($webcontent=$journalContentUtil.getContent($getterUtil.getLong($group_id), $webcontent-id, "", "$locale", ""))
@@ -214,8 +182,4 @@ YUI().use('get', function(Y){
            </div>
        
         #end
-   
-
-   
-
 </div>

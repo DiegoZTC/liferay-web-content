@@ -52,27 +52,13 @@ YUI().use('get', function(Y){
                  
                     var tab=$(this).attr('href');
                     var img_src=$(this).attr('img'); 
-                     //console.log("Tab:"+tab);
-                     //console.log("Img:"+img_src);
-                     //console.log($(tab+" img"));
-                     //$(tab+" img").attr('src',img_src);
-                     //console.log($(tab).parent().parent());
-                     
-                     //console.log($("#img-principal"));
-                     //console.log($("#img-principal.imagen"));
-                    
+                
                      if(tab.indexOf('1'))
                      {
                      $(tab+" img").attr('src',img_src);
                      }
-                    //console.log("$txtSubtitulo.imgPrincipal.Data");
-                    
-                     
-            
+                   
                     });
-                    
-                    
-                 
                 }); 
 
             
@@ -88,59 +74,57 @@ YUI().use('get', function(Y){
 ##$reserved-article-title.data
     #set($cnt = 1)
     <div id="$reserved-article-id.data" class="contenidos-lista">
- 
+    
     <ul>
-      <div class="titulo">$reserved-article-title.data</div>
-    #if (!$txtNomEtiqueta.getSiblings().isEmpty())
-	#foreach ($cur_txtNomEtiqueta in $txtNomEtiqueta.getSiblings())
-	    <li>
-	     
-            #set($url=$cur_txtNomEtiqueta.linkPagEtiqueta.getFriendlyUrl())
-            #if($url=="")
-            #set($url="#")
-            #end
-                    
-             #if(($cnt!=1) && ($txtSubtitulo.imgPrincipal.Data!=""))
-                
-                
-        	    <a class="lista titulo-item" href="#tabs-$cnt"
-        	          linkref="$cur_txtNomEtiqueta.linkPagEtiqueta.getFriendlyUrl()">
-        	             $cur_txtNomEtiqueta.getData()</a>
-               
-            #else
-               
-            	    <a class="lista titulo-item" href="#tabs-$cnt" 
-            	    img="$cur_txtNomEtiqueta.imgEtiqueta.Data"
-            	    img-src="$txtSubtitulo.imgPrincipal.Data"
-            	          linkref="$cur_txtNomEtiqueta.linkPagEtiqueta.getFriendlyUrl()">
-            	             $cur_txtNomEtiqueta.getData()</a>
-                  
-            #end
-	   </li>
-	  	     #set($cnt = $cnt+1)
-    	#end
-    #end
+        <div class="titulo">$reserved-article-title.data</div>
+        #if (!$txtNomEtiqueta.getSiblings().isEmpty())
+        	#foreach ($cur_txtNomEtiqueta in $txtNomEtiqueta.getSiblings())
+                	    <li>
+                	     
+                            #set($url=$cur_txtNomEtiqueta.linkPagEtiqueta.getFriendlyUrl())
+                            #if($url=="")
+                            #set($url="#")
+                            #end
+                                    
+                             #if(($cnt!=1) && ($txtSubtitulo.imgPrincipal.Data!=""))
+                                
+                        	    <a class="lista titulo-item" href="#tabs-$cnt"
+                        	          linkref="$cur_txtNomEtiqueta.linkPagEtiqueta.getFriendlyUrl()">
+                        	             $cur_txtNomEtiqueta.getData()</a>
+                               
+                            #else
+                               
+                            	    <a class="lista titulo-item" href="#tabs-$cnt" 
+                            	    img="$cur_txtNomEtiqueta.imgEtiqueta.Data"
+                            	    img-src="$txtSubtitulo.imgPrincipal.Data"
+                            	          linkref="$cur_txtNomEtiqueta.linkPagEtiqueta.getFriendlyUrl()">
+                            	             $cur_txtNomEtiqueta.getData()</a>
+                                  
+                            #end
+                	   </li>
+        	  	        #set($cnt = $cnt+1)
+            	#end
+        #end
     </ul>
+
 
     #set($cnt = 1)
      #if (!$txtNomEtiqueta.getSiblings().isEmpty())
-	#foreach ($cur_txtNomEtiqueta in $txtNomEtiqueta.getSiblings())
-  
-  <div id="tabs-$cnt">
-    
-        #set($url=$cur_txtNomEtiqueta.linkPagEtiqueta.getFriendlyUrl())
-        #if($url=="")
-        #set($url="#")
-        #end
-                    <a href="$url">
-                    <img id="img-elemento" class="imagen" src="$cur_txtNomEtiqueta.imgEtiqueta.Data"  width="100%" />
-                    </a>
-           
+    	#foreach ($cur_txtNomEtiqueta in $txtNomEtiqueta.getSiblings())
+      
+              <div id="tabs-$cnt">
+                
+                    #set($url=$cur_txtNomEtiqueta.linkPagEtiqueta.getFriendlyUrl())
+                    #if($url=="")
+                    #set($url="#")
+                    #end
+                                <a href="$url">
+                                <img id="img-elemento" class="imagen" src="$cur_txtNomEtiqueta.imgEtiqueta.Data"  width="100%" />
+                                </a>
+              </div>
             
-  </div>
-
-    #set($cnt = $cnt+1)
-    
-	#end
+                #set($cnt = $cnt+1)
+        
+    	#end
     #end
     </div>
