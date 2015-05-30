@@ -2,14 +2,12 @@
 
 var aURLS=[];
 
-var path=document.getElementById("folder").getAttribute('path');
-
 
 if (typeof jQuery == 'undefined') {  
     
     aURLs = [
-    path+'../../js/jquery/jquery-2.1.0.min.js',
-    path+'../../js/jquery/jquery-ui.js'   
+        '/html/js/jquery/jquery-1.11.0.min.js',
+    '/html/js/jquery/jquery-ui.js' 
 ];
     
 } 
@@ -31,38 +29,50 @@ YUI().use('get', function(Y){
            
               var $id='$reserved-article-id.data';
                 var $tabs = $("#"+$id);
-                
-                   
-                    
-                       
                         
 	                     $tabs.tabs(
                        {
-                            active : 0,
                          event:"mouseover"
+                        
                         }
                     );
-                    
-                  
-                   
                     
                      $tabs.tabs().addClass('ui-tabs-vertical ui-helper-clearfix');
                     $("#"+$id+" li").removeClass('ui-corner-top').addClass('ui-corner-left');
               
-                    //$("#"+$id+" ul li a").unbind('click').each(function() {
-                    //console.log(this);
-                    //});
                     
                     $("#"+$id+" li a").click(function() {
-                    
-                    //console.log($(this).attr('linkref'));
-                    window.open($(this).attr('linkref'),'_self',false);
-                    
+                    if($(this).attr('linkref')!="#")
+                     window.open($(this).attr('linkref'),'_self',false);
                     });
                     
-                     
-                    
                    
+                    
+                    $("#"+$id+" li a").mouseover(function() {
+                 
+                    var tab=$(this).attr('href');
+                    var img_src=$(this).attr('img'); 
+                     //console.log("Tab:"+tab);
+                     //console.log("Img:"+img_src);
+                     //console.log($(tab+" img"));
+                     //$(tab+" img").attr('src',img_src);
+                     //console.log($(tab).parent().parent());
+                     
+                     //console.log($("#img-principal"));
+                     //console.log($("#img-principal.imagen"));
+                    
+                     if(tab.indexOf('1'))
+                     {
+                     $(tab+" img").attr('src',img_src);
+                     }
+                    //console.log("$txtSubtitulo.imgPrincipal.Data");
+                    
+                     
+            
+                    });
+                    
+                    
+                 
                 }); 
 
             
@@ -78,14 +88,35 @@ YUI().use('get', function(Y){
 ##$reserved-article-title.data
     #set($cnt = 1)
     <div id="$reserved-article-id.data" class="contenidos-lista">
-      
+ 
     <ul>
       <div class="titulo">$reserved-article-title.data</div>
     #if (!$txtNomEtiqueta.getSiblings().isEmpty())
 	#foreach ($cur_txtNomEtiqueta in $txtNomEtiqueta.getSiblings())
-	    <li><a class="lista titulo-item" href="#tabs-$cnt" 
-	          linkref="$cur_txtNomEtiqueta.linkPagEtiqueta.getFriendlyUrl()">
-	             $cur_txtNomEtiqueta.getData()</a></li>
+	    <li>
+	     
+            #set($url=$cur_txtNomEtiqueta.linkPagEtiqueta.getFriendlyUrl())
+            #if($url=="")
+            #set($url="#")
+            #end
+                    
+             #if(($cnt!=1) && ($txtSubtitulo.imgPrincipal.Data!=""))
+                
+                
+        	    <a class="lista titulo-item" href="#tabs-$cnt"
+        	          linkref="$cur_txtNomEtiqueta.linkPagEtiqueta.getFriendlyUrl()">
+        	             $cur_txtNomEtiqueta.getData()</a>
+               
+            #else
+               
+            	    <a class="lista titulo-item" href="#tabs-$cnt" 
+            	    img="$cur_txtNomEtiqueta.imgEtiqueta.Data"
+            	    img-src="$txtSubtitulo.imgPrincipal.Data"
+            	          linkref="$cur_txtNomEtiqueta.linkPagEtiqueta.getFriendlyUrl()">
+            	             $cur_txtNomEtiqueta.getData()</a>
+                  
+            #end
+	   </li>
 	  	     #set($cnt = $cnt+1)
     	#end
     #end
@@ -94,11 +125,18 @@ YUI().use('get', function(Y){
     #set($cnt = 1)
      #if (!$txtNomEtiqueta.getSiblings().isEmpty())
 	#foreach ($cur_txtNomEtiqueta in $txtNomEtiqueta.getSiblings())
+  
   <div id="tabs-$cnt">
     
-    <a href="$cur_txtNomEtiqueta.linkPagEtiqueta.getFriendlyUrl()">
-    <img class="imagen" src="$cur_txtNomEtiqueta.imgEtiqueta.Data"  width="100%" />
-    </a>
+        #set($url=$cur_txtNomEtiqueta.linkPagEtiqueta.getFriendlyUrl())
+        #if($url=="")
+        #set($url="#")
+        #end
+                    <a href="$url">
+                    <img id="img-elemento" class="imagen" src="$cur_txtNomEtiqueta.imgEtiqueta.Data"  width="100%" />
+                    </a>
+           
+            
   </div>
 
     #set($cnt = $cnt+1)

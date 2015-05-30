@@ -158,6 +158,22 @@ YUI().use('get', function(Y){
                     });
                     
                     
+                     $("#menu ul li a").mouseover(function() {
+                      var tab=$(this).attr('href');
+                     //console.log(tab);
+                     var tab_article=$(tab).attr('articleid');
+                     //console.log($("#"+tab_article));
+                     
+                     var tab_item="#"+tab_article+" ul li a";
+                     if(tab_item!="")
+                        {
+                            var img_src=$(tab_item).attr('img-src');
+                            //console.log($(tab_item));
+                            //console.log(img_src);
+                            $("#"+tab_article+" #tabs-1 img").attr('src',img_src);
+                        }
+                     });
+                    
            }); 
             
           Y.log('Success!');
@@ -186,11 +202,11 @@ YUI().use('get', function(Y){
                <li><a href=#tab-$cur_Articulo.getUrlTitle()>$cur_Articulo.getTitle($localeUtil.getDefault()).toUpperCase()</a></li>
      #end
   </ul>
-        <div id="folder" path="$imagePath"/>
-	    #foreach ($cur_Articulo in $articulos)
+       
+          #foreach ($cur_Articulo in $articulos)
 	    
 	        
-            <div id=tab-$cur_Articulo.getUrlTitle()>
+            <div id=tab-$cur_Articulo.getUrlTitle() articleId=$cur_Articulo.getArticleId()>
                             #set ($webcontent-id = $cur_Articulo.getArticleId())
                             #set ($webcontent=$journalContentUtil.getContent($getterUtil.getLong($group_id), $webcontent-id, "", "$locale", ""))
                             $webcontent
