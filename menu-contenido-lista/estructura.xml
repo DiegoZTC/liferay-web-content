@@ -1,19 +1,45 @@
 
 <root available-locales="es_ES" default-locale="es_ES">
-	<dynamic-element fieldNamespace="ddm" indexType="keyword" localizable="true" name="Lista_del_Contenido" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-separator" width="">
-		<dynamic-element dataType="string" indexType="keyword" localizable="true" name="txtIndice" readOnly="false" repeatable="false" required="true" showLabel="true" type="text" width="small">
+	<dynamic-element dataType="integer" fieldNamespace="ddm" indexType="keyword" localizable="true" name="txtIndice" readOnly="false" repeatable="false" required="true" showLabel="true" type="ddm-integer" width="small">
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[Número del indice de presentación:]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[0]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[Este número indicara el orden como se mostrara este árticulo en el menu]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element dataType="string" indexType="keyword" localizable="true" name="txtSubtitulo" readOnly="false" repeatable="false" required="false" showLabel="true" type="textarea" width="small">
+		<dynamic-element dataType="image" fieldNamespace="wcm" indexType="keyword" localizable="true" name="imgPrincipal" readOnly="false" repeatable="false" required="false" showLabel="true" type="wcm-image" width="">
 			<meta-data locale="es_ES">
 				<entry name="label">
-					<![CDATA[Número del indice de presentación:]]>
+					<![CDATA[Imagen Principal]]>
 				</entry>
 				<entry name="predefinedValue">
 					<![CDATA[]]>
 				</entry>
 				<entry name="tip">
-					<![CDATA[]]>
+					<![CDATA[Imagen que se mostrara antes de la seleccion de algun elemento de la lista]]>
 				</entry>
 			</meta-data>
 		</dynamic-element>
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[Subtitulo:]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[Titulo diferente al principal no es indispensable]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element fieldNamespace="ddm" indexType="keyword" localizable="true" name="lstContenido" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-separator" width="">
 		<meta-data locale="es_ES">
 			<entry name="label">
 				<![CDATA[Lista del Contenido]]>
@@ -33,13 +59,13 @@
 		<dynamic-element dataType="link-to-page" fieldNamespace="ddm" indexType="keyword" localizable="true" name="linkPagEtiqueta" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-link-to-page" width="small">
 			<meta-data locale="es_ES">
 				<entry name="label">
-					<![CDATA[Enlace a página]]>
+					<![CDATA[Dirección URL a Sitio:]]>
 				</entry>
 				<entry name="predefinedValue">
 					<![CDATA[]]>
 				</entry>
 				<entry name="tip">
-					<![CDATA[]]>
+					<![CDATA[Dirección URL hacia una página en el sitio]]>
 				</entry>
 			</meta-data>
 		</dynamic-element>
@@ -52,7 +78,7 @@
 					<![CDATA[]]>
 				</entry>
 				<entry name="tip">
-					<![CDATA[]]>
+					<![CDATA[La definición de esta imagen es obligatoria para mostrar respectivamente al seleccionar un elemento]]>
 				</entry>
 			</meta-data>
 		</dynamic-element>
@@ -64,7 +90,7 @@
 				<![CDATA[]]>
 			</entry>
 			<entry name="tip">
-				<![CDATA[]]>
+				<![CDATA[Se define nombre de un elemento de la lista que se mostrara.]]>
 			</entry>
 		</meta-data>
 	</dynamic-element>

@@ -101,26 +101,20 @@ var aURLS=[];
 if (typeof jQuery == 'undefined') {  
     
       aURLs = [
-    '$imagePath../../js/jquery/jquery-2.1.0.min.js',
-    '$imagePath../../js/jquery/jquery-ui.js',
-    '$imagePath../../js/responsive-tabs/jquery.responsiveTabs.min.js'    
+    '/html/js/jquery/jquery-1.11.0.min.js',
+    '/html/js/jquery/jquery-ui.js',
+    '/html/js/responsive-tabs/jquery.responsiveTabs.min.js'    
 ];
 
 } else {
 
   aURLs = [
-    
-    '$imagePath../../js/jquery/jquery-ui.js',
-    '$imagePath../../js/responsive-tabs/jquery.responsiveTabs.min.js'    
+    '/html/js/jquery/jquery-ui.js',
+    '/html/js/responsive-tabs/jquery.responsiveTabs.min.js'   
     ];
     
 
 }
-
-
-var jcss=[
-'$imagePath../../css/responsive-tabs/responsive-tabs.css'
-];
 
 
 YUI().use('get', function(Y){
@@ -136,28 +130,33 @@ YUI().use('get', function(Y){
 
         onSuccess: function () {
            $(document).ready(function(){ 
-           
-           
+    
                 var $tabs = $('#menu');
                  
-                    
-                    $( "#menu" ).fadeIn( "slow","linear");
+                /*
+                    $( "#menu" ).fadeIn( "100","linear");
                     $("#menu-wrap").css("display", "none");
                     
                     $( "#menu" ).fadeIn("start", function() {
                     $("#nav-menu").fadeIn("slow"); 
                     $("#nav-menu").css("background","#CCCCCC");
                  });
-                     
-                     
+                 */
+                    $("#menu-wrap").css("display", "none");
+                    $("#menu").css("display", "block");
                   
                     
                     $tabs.responsiveTabs({
-                    startCollapsed: 'accordion',
-                    event: 'mouseover',
-                    active: 0
+                        rotate: false,
+                        startCollapsed: 'accordion',
+                        collapsible: 'accordion',
+        		        event:'mouseover'
                     });
-         
+                       
+                    $("#menu ul li a").click(function() {
+                        $(this).prop('href',"#"); 
+                    });
+                    
                     
            }); 
             
@@ -169,19 +168,13 @@ YUI().use('get', function(Y){
   
 }); 
 
-
-
 </script>
-<style type="text/css">
 
-
-    
-</style>
 
 
         
-<div style="height: 310px; display:block" id="menu-wrap"></div>
-<div id="menu" style="display:none;">
+<div style="height: 322px; display:block" id="menu-wrap"></div>
+<div id="menu" style="display:block;">
  
   
     <ul>

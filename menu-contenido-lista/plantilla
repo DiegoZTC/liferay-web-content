@@ -32,15 +32,37 @@ YUI().use('get', function(Y){
               var $id='$reserved-article-id.data';
                 var $tabs = $("#"+$id);
                 
-                    $tabs.tabs(
-                        {event:"mouseover",
-                        active:0
+                   
+                    
+                       
+                        
+	                     $tabs.tabs(
+                       {
+                            active : 0,
+                         event:"mouseover"
                         }
                     );
+                    
+                  
+                   
                     
                      $tabs.tabs().addClass('ui-tabs-vertical ui-helper-clearfix');
                     $("#"+$id+" li").removeClass('ui-corner-top').addClass('ui-corner-left');
               
+                    //$("#"+$id+" ul li a").unbind('click').each(function() {
+                    //console.log(this);
+                    //});
+                    
+                    $("#"+$id+" li a").click(function() {
+                    
+                    //console.log($(this).attr('linkref'));
+                    window.open($(this).attr('linkref'),'_self',false);
+                    
+                    });
+                    
+                     
+                    
+                   
                 }); 
 
             
@@ -54,18 +76,17 @@ YUI().use('get', function(Y){
 
 </script>
 ##$reserved-article-title.data
-      
-    
-   
     #set($cnt = 1)
     <div id="$reserved-article-id.data" class="contenidos-lista">
       
     <ul>
-      <div class="lista titulo">$reserved-article-title.data</div>
+      <div class="titulo">$reserved-article-title.data</div>
     #if (!$txtNomEtiqueta.getSiblings().isEmpty())
 	#foreach ($cur_txtNomEtiqueta in $txtNomEtiqueta.getSiblings())
-	    <li><a class="lista titulo-item" href="#tabs-$cnt">$cur_txtNomEtiqueta.getData()</a></li>
-	     #set($cnt = $cnt+1)
+	    <li><a class="lista titulo-item" href="#tabs-$cnt" 
+	          linkref="$cur_txtNomEtiqueta.linkPagEtiqueta.getFriendlyUrl()">
+	             $cur_txtNomEtiqueta.getData()</a></li>
+	  	     #set($cnt = $cnt+1)
     	#end
     #end
     </ul>
