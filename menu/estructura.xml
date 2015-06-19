@@ -3,7 +3,7 @@
 	<dynamic-element fieldNamespace="ddm" indexType="" localizable="true" name="Nota__El_identificador_debe_ser_del_contenido_web_al_cual_desea_mostrar" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-separator" width="">
 		<meta-data locale="es_ES">
 			<entry name="label">
-				<![CDATA[* La carpeta elegida debe existir dentro de la carpeta 'Menu']]>
+				<![CDATA[* La carpeta elegida debe existir dentro de la carpeta Principal]]>
 			</entry>
 			<entry name="predefinedValue">
 				<![CDATA[]]>

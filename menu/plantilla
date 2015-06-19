@@ -1,4 +1,4 @@
-#set($carpetaPrincipal = "menu")
+#set($carpetaPrincipal = "cabecera de pagina")
 #set ($languageId = $request.theme-display.language-id)
 
 #set ($DDMStructureLocalService = $serviceLocator.findService("com.liferay.portlet.dynamicdatamapping.service.DDMStructureLocalService"))
@@ -32,6 +32,8 @@
 	     	            	      
 	     	 	      #if($art_tmp!=$addm.getUrlTitle())
 	     	 	           
+	     	 	 
+	     	 	         
 	     	 	            #if( $addm.getFolder().getParentFolder().getName().toLowerCase() == 
 	     	 	                    $carpetaPrincipal)
 	     	 	                    
@@ -89,59 +91,42 @@
     #set ($dummy =$articulos.add($item.articulo))
 #end
 
+
 <script type="text/javascript">
 
-var aURLS=[];
-
-if (typeof jQuery == 'undefined') {  
+ $jQ(document).ready(function(){ 
     
-      aURLs = [
-    '/html/js/jquery/jquery-1.11.0.min.js',
-    '/html/js/jquery/jquery-ui.js',
-    '/html/js/responsive-tabs/jquery.responsiveTabs.min.js'    
-];
-
-} else {
-
-  aURLs = [
-    '/html/js/jquery/jquery-ui.js',
-    '/html/js/responsive-tabs/jquery.responsiveTabs.min.js'   
-    ];
-    
-
-}
-
-YUI().use('get', function(Y){
-
-    Y.Get.js(
-    aURLs ,
-    {
-        onFailure: function () {
-          Y.log('Failure!');
-        },
-
-        onSuccess: function () {
-           $(document).ready(function(){ 
-    
-                var $tabs = $('#menu');
+        
+                var $tabs = $jQ('#menu');
  
-                    $("#menu-wrap").css("display", "none");
-                    $("#menu").css("display", "block");
-                  
+                   $jQ("#menu-wrap").css("display", "none");
+                    //$("#menu").css("display", "block");
+                    $jQ("#menu").fadeIn(500);
                     
+                    if(screen.width>=800)
+                    {
+                     $tabs.responsiveTabs({
+                        rotate: false,
+        		        event:'mouseover'
+                    });
+                       
+                    $jQ("#menu ul li a").click(function() {
+                        $jQ(this).prop('href',"#"); 
+                    });
+                    }
+                    else
+                    {
                     $tabs.responsiveTabs({
                         rotate: false,
                         startCollapsed: 'accordion',
                         collapsible: 'accordion',
-        		        event:'mouseover'
-                    });
-                       
-                    $("#menu ul li a").click(function() {
-                        $(this).prop('href',"#"); 
+        		        event:'click'
                     });
                     
                     
-                     $("#menu ul li a").mouseover(function() {
+                    }
+                  
+                     $jQ("#menu ul li a").mouseover(function() {
                         var tab=$(this).attr('href');
                         var tab_article=$(tab).attr('articleid');
 
@@ -149,24 +134,20 @@ YUI().use('get', function(Y){
                          if(tab_item!="")
                             {
                                 var img_src=$(tab_item).attr('img-src');
-                                $("#"+tab_article+" #tabs-1 img").attr('src',img_src);
+                                $jQ("#"+tab_article+" #tabs-1 img").attr('src',img_src);
                             }
                      });
+                     
+                     
+                    
                     
            }); 
-            
-          Y.log('Success!');
-        }
-    
-    });
-    
-  
-}); 
+
 
 </script>
 
-<div style="height: 322px; display:block" id="menu-wrap"></div>
-<div id="menu" style="display:block;">
+<div style="display: block; height:322px" id="menu-wrap"></div>
+<div id="menu" style="display:none;">
     <ul>
         #foreach ($cur_Articulo in $articulos)
             <li><a href=#tab-$cur_Articulo.getUrlTitle()>$cur_Articulo.getTitle($localeUtil.getDefault()).toUpperCase()</a></li>

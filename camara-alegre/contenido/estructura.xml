@@ -1,0 +1,106 @@
+
+<root available-locales="es_ES" default-locale="es_ES">
+	<dynamic-element fieldNamespace="ddm" indexType="keyword" localizable="true" name="Separador1804" readOnly="false" repeatable="false" required="false" showLabel="false" type="ddm-separator" width="">
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[Separador]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+			<entry name="style">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element dataType="integer" fieldNamespace="ddm" indexType="keyword" localizable="true" name="txtIndice" readOnly="false" repeatable="false" required="true" showLabel="true" type="ddm-integer" width="small">
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[Número del indice de presentación:]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[0]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[Este número indicara el orden como se mostrara este árticulo en el menu]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element fieldNamespace="ddm" indexType="keyword" localizable="true" name="Lista_de_las_imágenes" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-separator" width="">
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[Lista de las imágenes]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+			<entry name="style">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element dataType="image" fieldNamespace="wcm" indexType="keyword" localizable="true" name="imgCamara" readOnly="false" repeatable="true" required="false" showLabel="true" type="wcm-image" width="">
+		<dynamic-element dataType="string" indexType="keyword" localizable="true" name="txtTituloImagen" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="small">
+			<meta-data locale="es_ES">
+				<entry name="label">
+					<![CDATA[Título de la Imagen:]]>
+				</entry>
+				<entry name="predefinedValue">
+					<![CDATA[]]>
+				</entry>
+				<entry name="tip">
+					<![CDATA[Defina un título para la imagen, o por defecto se tomara el titulo principal]]>
+				</entry>
+			</meta-data>
+		</dynamic-element>
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[Imagen]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element fieldNamespace="ddm" indexType="" localizable="false" name="Separador17268" readOnly="false" repeatable="false" required="false" showLabel="false" type="ddm-separator" width="">
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[Separador]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+			<entry name="style">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element fieldNamespace="ddm" indexType="" localizable="true" name="Nota__Para_que_los_cambios_se_guarden_debe_pulsar__Publicar_" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-separator" width="">
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[Nota: Para que los cambios se guarden debe pulsar "Publicar"]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+			<entry name="style">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+</root>

@@ -1,0 +1,106 @@
+<style type="text/css">
+.aui .carousel {
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		user-select: none;
+		margin: auto;
+	}
+	.aui .carousel-item {
+		border-radius: 6px;
+		opacity: 0;
+		display:block; 
+			width:100%; 
+	}
+	.aui .carousel li {
+		margin: 0 !important;
+	}
+	.aui .carousel menu {
+		display:none;
+	}
+
+	
+</style>
+ 
+
+
+<div class="contenidos-galeria">
+
+
+
+<div class="contenido-wrapper">
+
+     #if($txtSubtitulo.getData() =="" || $txtSubtitulo.getData().isNull() )
+        <div class="titulo">$reserved-article-title.data</div>
+    #else
+        <div class="titulo">$txtSubtitulo.getData()</div>
+    #end
+    
+    <div class="texto">
+        
+        #if($txtContenido.imgContenido.Data != "")
+        <img  class="imagen-contenido" src="$txtContenido.imgContenido.Data"/>
+        #end
+        <p>$txtContenido.getData()</p>
+        
+         #if($linkPagina.getData() != "")
+        <div class="url">
+       <a href="$txtContenido.linkPagina.getFriendlyUrl()">
+            &#171; Ver más &#187;
+        </a>
+        </div>
+        #end
+    
+    </div>
+    
+</div>
+
+<div class="imagen-wrapper">
+        <div id="galeria">
+           #set($totalCount = 0)
+                #if (!$imgGaleria.getSiblings().isEmpty())
+                	#foreach ($cur_imgGaleria in $imgGaleria.getSiblings())
+                		<img class="imagen-lateral carousel-item" alt="Imagen" src="$cur_imgGaleria.getData()"/>
+                		#set($totalCount = $totalCount + 1)
+                	#end
+                #else
+                    <div class="imagen-lateral" style="background:red"/>
+                #end
+        </div>
+</div>
+#if($totalCount > 0)
+	<script>
+	
+    YUI().use(
+          'aui-carousel',
+          function(Y) {
+    
+            if(screen.width>=480)
+            {
+                new Y.Carousel(
+                  {
+                    contentBox: '#galeria',
+                    height: 273
+                  }
+                ).render();
+               
+            }
+            else
+            {
+                new Y.Carousel(
+                  {
+                    contentBox: '#galeria',
+                    height: 160
+                  }
+                ).render();
+            }
+            }
+        );
+            
+           
+
+	</script>
+#end
+
+
+
+</div>

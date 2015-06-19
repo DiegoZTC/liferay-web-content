@@ -1,0 +1,38 @@
+<div class="contenidos-texto">
+
+
+
+<div class="contenido-wrapper">
+    
+
+    #if($txtSubtitulo.getData() =="" || $txtSubtitulo.getData().isNull() )
+        <div class="titulo">$reserved-article-title.data</div>
+    #else
+        <div class="titulo">$txtSubtitulo.getData()</div>
+    #end
+    
+    <div class="texto">
+        
+        #if($txtContenido.imgContenido.Data != "")
+        <img  class="imagen-contenido" src="$txtContenido.imgContenido.Data"/>
+        #end
+        <p>$txtContenido.getData()</p>
+        
+         #if($linkPagina.getData() != "")
+        <div class="url">
+           <a href="$linkPagina.getFriendlyUrl()">
+                &#171; Ver más &#187;
+            </a>
+        </div>
+        #end
+    
+    </div>
+</div>
+
+<div class="imagen-wrapper">
+    <img class="imagen-lateral" alt="Imagen" src="$imgLateral.getData()" />
+</div>
+
+
+
+</div>

@@ -1,74 +1,43 @@
 <script type="text/javascript">
 
-var aURLS=[];
-
-
-if (typeof jQuery == 'undefined') {  
-    
-    aURLs = [
-        '/html/js/jquery/jquery-1.11.0.min.js',
-    '/html/js/jquery/jquery-ui.js' 
-];
-    
-} 
-
-
-YUI().use('get', function(Y){
-
-
-    Y.Get.js(
-    aURLs ,
-    {
-    
-        onFailure: function () {
-            Y.log('Failure!');
-        },
-
-        onSuccess: function () {
-            $(document).ready(function(e){ 
+            $jQ(document).ready(function(e){ 
            
               var $id='$reserved-article-id.data';
-                var $tabs = $("#"+$id);
+                var $tabs = $jQ("#"+$id);
                         
 	                     $tabs.tabs(
                        {
-                         event:"mouseover"
+                         event:"mouseover",
+                         active:false
                         
                         }
                     );
                     
                      $tabs.tabs().addClass('ui-tabs-vertical ui-helper-clearfix');
-                    $("#"+$id+" li").removeClass('ui-corner-top').addClass('ui-corner-left');
+                    $jQ("#"+$id+" li").removeClass('ui-corner-top').addClass('ui-corner-left');
               
                     
                     $("#"+$id+" li a").click(function() {
-                    if($(this).attr('linkref')!="#")
-                     window.open($(this).attr('linkref'),'_self',false);
+                    if($jQ(this).attr('linkref')!="#")
+                     window.open($j(this).attr('linkref'),'_self',false);
                     });
                     
                    
                     
-                    $("#"+$id+" li a").mouseover(function() {
+                    $jQ("#"+$id+" li a").mouseover(function() {
                  
                     var tab=$(this).attr('href');
                     var img_src=$(this).attr('img'); 
                 
                      if(tab.indexOf('1'))
                      {
-                     $(tab+" img").attr('src',img_src);
+                     $jQ(tab+" img").attr('src',img_src);
                      }
                    
                     });
                 }); 
 
-            
-             Y.log('Success!');
-        }
-    
-    });
-    
-  
-}); 
+          
 
 </script>
 ##$reserved-article-title.data
@@ -76,7 +45,13 @@ YUI().use('get', function(Y){
     <div id="$reserved-article-id.data" class="contenidos-lista">
     
     <ul>
-        <div class="titulo">$reserved-article-title.data</div>
+        
+        #if($txtSubtitulo.getData() =="" || $txtSubtitulo.getData().isNull() )
+            <div class="titulo">$reserved-article-title.data</div>
+        #else
+            <div id="$txtSubtitulo.getData()" class="titulo">
+        #end
+    
         #if (!$txtNomEtiqueta.getSiblings().isEmpty())
         	#foreach ($cur_txtNomEtiqueta in $txtNomEtiqueta.getSiblings())
                 	    <li>
@@ -118,9 +93,18 @@ YUI().use('get', function(Y){
                     #if($url=="")
                     #set($url="#")
                     #end
+                    
+                        #if(($cnt!=1) && ($txtSubtitulo.imgPrincipal.Data!=""))
+                            
                                 <a href="$url">
                                 <img id="img-elemento" class="imagen" src="$cur_txtNomEtiqueta.imgEtiqueta.Data"  width="100%" />
                                 </a>
+                        #else
+                            <a href="$url">
+                                <img id="img-elemento" class="imagen" src="$txtSubtitulo.imgPrincipal.Data"  width="100%" />
+                                </a>
+                        
+                        #end
               </div>
             
                 #set($cnt = $cnt+1)

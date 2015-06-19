@@ -1,0 +1,129 @@
+
+<root available-locales="es_ES" default-locale="es_ES">
+	<dynamic-element dataType="integer" fieldNamespace="ddm" indexType="keyword" localizable="true" name="txtIndice" readOnly="false" repeatable="false" required="true" showLabel="true" type="ddm-integer" width="small">
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[Número del indice de presentación:]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[0]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[Este número indicara el orden como se mostrara este árticulo en el menu]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element dataType="string" indexType="keyword" localizable="true" name="txtSubtitulo" readOnly="false" repeatable="false" required="false" showLabel="true" type="textarea" width="medium">
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[Subtitulo:]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[Título diferente al principal es opcional.]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element fieldNamespace="ddm" indexType="keyword" localizable="false" name="Separador5174" readOnly="false" repeatable="false" required="false" showLabel="false" type="ddm-separator" width="">
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[Separador]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+			<entry name="style">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element dataType="string" indexType="keyword" localizable="true" name="txtContenido" readOnly="false" repeatable="false" required="true" showLabel="true" type="textarea" width="large">
+		<dynamic-element dataType="image" fieldNamespace="wcm" indexType="keyword" localizable="true" name="imgContenido" readOnly="false" repeatable="false" required="false" showLabel="true" type="wcm-image" width="">
+			<meta-data locale="es_ES">
+				<entry name="label">
+					<![CDATA[Imagen en el Contenido]]>
+				</entry>
+				<entry name="predefinedValue">
+					<![CDATA[]]>
+				</entry>
+				<entry name="tip">
+					<![CDATA[La definición de esta imagen es *opcional" para mostrarse dentro del contenido.]]>
+				</entry>
+			</meta-data>
+		</dynamic-element>
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[Texto del Contenido]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element dataType="link-to-page" fieldNamespace="ddm" indexType="keyword" localizable="true" name="linkPagina" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-link-to-page" width="small">
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[Dirección URL a Sitio:]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[Dirección URL hacia una página en el sitio]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element dataType="image" fieldNamespace="wcm" indexType="keyword" localizable="true" name="imgLateral" readOnly="false" repeatable="false" required="true" showLabel="true" type="wcm-image" width="">
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[Imagen]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[Añada o elimine imágenes que se mostraran en conjunto al contenido]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element fieldNamespace="ddm" indexType="" localizable="false" name="Separador2651" readOnly="false" repeatable="false" required="false" showLabel="false" type="ddm-separator" width="">
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[Separador]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+			<entry name="style">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element fieldNamespace="ddm" indexType="" localizable="false" name="Nota__Para_guardar_cambios_se_debe__Publicar_" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-separator" width="">
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[Nota: Para guardar cambios se debe "Publicar"]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+			<entry name="style">
+				<![CDATA[.separator {margin: 0px;}]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+</root>
