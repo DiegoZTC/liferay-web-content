@@ -1,0 +1,90 @@
+
+<root available-locales="es_ES" default-locale="es_ES">
+	<dynamic-element dataType="string" indexType="keyword" localizable="true" name="txtSubtitulo" readOnly="false" repeatable="false" required="false" showLabel="true" type="text" width="large">
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[Subtitulo]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[Si desea mostrar un contenido en el visor , por defecto no se mostrara]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element fieldNamespace="ddm" indexType="keyword" localizable="true" name="__Defina_las_imagenes_que_se_mostrara_en_el_visor_" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-separator" width="">
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[* Defina las imagenes que se mostrara en el visor.]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+			<entry name="style">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element dataType="boolean" indexType="keyword" localizable="true" name="chkVisible" readOnly="false" repeatable="true" required="false" showLabel="true" type="checkbox" width="">
+		<dynamic-element dataType="image" fieldNamespace="wcm" indexType="keyword" localizable="true" name="imgVisor" readOnly="false" repeatable="false" required="true" showLabel="true" type="wcm-image" width="">
+			<meta-data locale="es_ES">
+				<entry name="label">
+					<![CDATA[Imagen]]>
+				</entry>
+				<entry name="predefinedValue">
+					<![CDATA[]]>
+				</entry>
+				<entry name="tip">
+					<![CDATA[]]>
+				</entry>
+			</meta-data>
+		</dynamic-element>
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[¿La imagen estará visible?]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[false]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element fieldNamespace="ddm" indexType="keyword" localizable="true" name="Separador3713" readOnly="false" repeatable="false" required="false" showLabel="false" type="ddm-separator" width="">
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[Separador]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+			<entry name="style">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+	<dynamic-element fieldNamespace="ddm" indexType="keyword" localizable="true" name="Para_que_los_cambios_se_hagan_visibles_debe_primero_realizar_la_accion_de_Publicar__" readOnly="false" repeatable="false" required="false" showLabel="true" type="ddm-separator" width="">
+		<meta-data locale="es_ES">
+			<entry name="label">
+				<![CDATA[Para que los cambios se hagan visibles debe primero realizar la accion de Publicar".]]>
+			</entry>
+			<entry name="predefinedValue">
+				<![CDATA[]]>
+			</entry>
+			<entry name="tip">
+				<![CDATA[]]>
+			</entry>
+			<entry name="style">
+				<![CDATA[]]>
+			</entry>
+		</meta-data>
+	</dynamic-element>
+</root>

@@ -1,0 +1,112 @@
+<div class="clear"></div>
+
+
+<div class="galeria">
+    <div id="titulo">$reserved-article-title.data</div>
+    <div id="imagenes">
+    #if (!$imgCamara.getSiblings().isEmpty())
+    <ul>
+    
+    #set($alt="")
+    #foreach ($cur_imgCamara in $imgCamara.getSiblings())
+        
+        #if($StringUtils.isEmpty($cur_imgCamara.txtTituloImagen.getData()) 
+                    || $cur_imgCamara.txtTituloImagen.getData()== '' )
+                    #set($alt=$reserved-article-title.data) 
+                 #else
+                    #set($alt=$cur_imgCamara.txtTituloImagen.getData())
+        #end
+                
+        <li>
+          <a class="backimage" href="$cur_imgCamara.Data" data-simplbox="lista"><img src="$cur_imgCamara.Data" alt="$alt" /></a>
+          <div class="titulo-imagen">$alt</div>
+          
+        </li>
+    #end
+  
+      </ul>
+    #end
+
+    </div>
+
+</div>
+
+    <script src="/html/js/simplbox/simplbox.js"></script>
+      <script type="text/javascript">
+var preLoadIconOn = function () {
+    var newE = document.createElement("div"),
+        newB = document.createElement("div");
+        newE.setAttribute("id", "simplbox-loading");
+        newE.appendChild(newB);
+    document.body.appendChild(newE);
+},
+preLoadIconOff = function () {
+    var elE = document.getElementById("simplbox-loading");
+    elE.parentNode.removeChild(elE);
+},
+overlayOn = function () {
+    var newA = document.createElement("div");
+    newA.setAttribute("id", "simplbox-overlay");
+    document.body.appendChild(newA);
+},
+overlayOff = function () {
+    var elA = document.getElementById("simplbox-overlay");
+    elA.parentNode.removeChild(elA);
+},
+closeButtonOn = function (base) {
+    var newE = document.createElement("div");
+    newE.setAttribute("id", "simplbox-close");
+    document.body.appendChild(newE);
+    newE = document.getElementById("simplbox-close");
+    base.API_AddEvent(newE, "click touchend", function () {
+        base.API_RemoveImageElement();
+        return false;
+    });
+},
+closeButtonOff = function () {
+    var elA = document.getElementById("simplbox-close");
+    elA.parentNode.removeChild(elA);
+},
+captionOn = function (base) {
+    var element = document.getElementById("simplbox-caption"),
+        documentFragment = document.createDocumentFragment(),
+        newElement = document.createElement("div"),
+        newText = document.createTextNode(base.m_Alt);
+
+    if (element) {
+        element.parentNode.removeChild(element);
+    }
+
+    newElement.setAttribute("id", "simplbox-caption");
+    newElement.appendChild(newText);
+    documentFragment.appendChild(newElement);
+    document.getElementsByTagName("body")[0].appendChild(documentFragment);
+},
+captionOff = function () {
+    var element = document.getElementById("simplbox-caption");
+    element.parentNode.removeChild(element);
+};
+
+        var L = new SimplBox(document.querySelectorAll("[data-simplbox='lista']"), {
+            quitOnDocumentClick: false,
+            onStart: function () {
+                overlayOn();
+                closeButtonOn(L);
+            },
+            onEnd: function () {
+                overlayOff();
+                closeButtonOff();
+                captionOff();
+            },
+            onImageLoadStart: function () {
+                preLoadIconOn();
+                captionOn(L);
+            },
+            onImageLoadEnd: function () {
+                preLoadIconOff();
+            }
+        });
+        L.init();
+
+
+    </script>

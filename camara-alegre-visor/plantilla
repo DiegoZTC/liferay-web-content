@@ -1,0 +1,83 @@
+#set ($valueSpeed=$txtValueSpeed.getData())
+
+
+  <style>
+    
+    .camara-visor .slick-slide img {
+        display: block;
+        margin: 0 auto;
+    }
+   
+    .camara-visor ul{
+    
+        margin:0px 0px 15px 0px;
+    }
+    
+    .camara-visor .slick-dots li button::before {
+       font-size: 15px;
+       color: #5B5B5B;
+    }
+    
+     .camara-visor .slick-dots li.slick-active button::before {
+        color: #F60303;
+    }
+    
+    .camara-visor .slick-dots li button{
+        box-shadow: 0px 0px transparent;
+     }
+    </style>
+
+
+    <script type="text/javascript">
+    $jQ(document).ready(function(){
+    
+          $jQ('.camara-visor').slick({
+            lazyLoad: 'ondemand',
+              autoplay: true,
+              fade: true,
+              dots: true,
+              infinite: true,
+              speed: $valueSpeed,
+               arrows: false,
+               slidesToShow: 1
+          });
+    
+    
+    
+        var minHeight=0;
+        var cn=0;
+         $(".slick-slide > img").each(function(){
+        
+            if(cn==0)
+            {
+                minHeight=$(this).height();
+            }else
+            {
+                if($(this).height()<minHeight)
+                {
+                    minHeight=$(this).height();
+                }
+            
+            }
+   
+         });
+        
+        var img = $(".slick-slide").find('img:first');
+        $(".camara-visor .slick-slide img").css("height",minHeight);
+       
+    });
+    </script>
+
+ #if($txtSubtitulo.getData() != "" || !$txtSubtitulo.getData().isNull() )
+ <p>
+    $txtSubtitulo.getData()
+ </p>
+ #end
+ 
+ <div class="camara-visor" style="margin: 0 auto;">
+ #foreach ($cur_chkVisible in $chkVisible.getSiblings())
+		#if ($getterUtil.getBoolean($cur_chkVisible.getData()))
+			<div><img src="$cur_chkVisible.imgVisor.getData()" alt=""/></div>
+		#end
+	#end
+</div>
